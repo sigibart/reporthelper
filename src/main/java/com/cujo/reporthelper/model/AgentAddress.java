@@ -9,7 +9,9 @@ public class AgentAddress {
 	
 	private int id;	
 	private int agentId;	
-	private int status;	
+	private int status;
+	private Double latitude;
+	private Double longitude;
 	private String country;
 	@JsonProperty("country_code")
 	private String code;
@@ -45,6 +47,18 @@ public class AgentAddress {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public Double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+	public Double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 	public String getCountry() {
 		return country;

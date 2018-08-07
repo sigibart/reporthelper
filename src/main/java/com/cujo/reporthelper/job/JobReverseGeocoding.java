@@ -46,11 +46,14 @@ private final Logger log = LoggerFactory.getLogger(this.getClass());
 			return;
 						
 		for (Agent agent : agentList) {			
-			AgentAddress agentAddress = new AgentAddress();
 			
-			try {
-				agentAddress = service.convert(agent);
+			try {				
+				AgentAddress agentAddress = agentAddressMapper.findByCoordinates(agent.getLatitude(), agent.getLongitude());				
+				if (agentAddress == null)
+					agentAddress = service.convert(agent);
 				agentAddress.setAgentId(agent.getId());
+				agentAddress.setLatitude(agent.getLatitude());
+				agentAddress.setLongitude(agent.getLongitude());				
 				if (agentAddress != null && agentAddress.getCountry() != null)
 					agentAddress.setStatus(AgentAddress.STATUS_SUCCESS);
 				else
